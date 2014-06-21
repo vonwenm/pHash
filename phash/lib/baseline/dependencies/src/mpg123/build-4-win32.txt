@@ -1,0 +1,31 @@
+Compiling on Win32.
+
+For Win32 there is a Microsoft Visual C++ compatible makefile in the Win32\ directory and a MSDOS batch file in the top level directory of the distribution.
+
+To build the examples programs you will need to download the precompiled win32 or win64 libsndfile binary and install them.
+
+Making the libsamplerate DLL on Win32 involves the following:
+
+Using WinZip in the GUI, open the libsamplerate-0.X.Y.tar.gz file and extract the files into a directory. The following example assumes C:\.
+In the directory containing the extracted files, find the file Win32\Makefile.msvc and open it in a text editor (ie Notepad or similar).
+Find the line which starts with MSVCDir and modify the directory path to point to the location of MSVC++ on your machine. This allows the makefile to inform the compiler of the location of the standard header files.
+Copy libsndfile-1.dll, libsndfile-1.lib and libsndfile-1.def from the directory libsndfile was installed in to the the directory containing libsamplerate.
+Copy the header file include/sndfile.h from where libsndfile was installed to the Win32 directory under the libsamplerate directory.
+Open a Command Shell and cd into the libsamplerate-0.X.Y directory.
+Make sure that the program nmake (which is part of the MSCV++ package) is in a directory which is part of your PATH variable.
+Type in the command
+    C:\libsamplerate-0.X.Y> make
+		
+and press <return>. You should now see a a large number of compile commands as libsamplerate.dll is built.
+To check that the built DLL has been compiled correctly type in and run the command
+    C:\libsamplerate-0.X.Y> make check
+		
+which will compile a set of test programs and run them. If any of the programs fail the error message will be help in debugging the problem. (Note that some of the tests require libsndfile or libfftw/librfftw and are not able to run on Win32).
+At the end of the above procedure, you will find the DLL, libsamplerate.dll, a LIB file libsamplerate.lib in the current directory. These two files, along with the header file samplerate.h (in the src\ directory) are all that you need to copy to your project in order to use libsamplerate.
+
+
+Compile Problems
+
+If you run into compile problems using the above procedure, you should join the main mailing list and post your problem and/or questions there. Please include any error messages generated during step 6 above.
+
+If you are using some other method to compile the libsamplerate DLL you are probably on your 
